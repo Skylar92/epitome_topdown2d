@@ -1321,7 +1321,7 @@ TextureImporter:
         width: 16
         height: 16
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -1329,6 +1329,132 @@ TextureImporter:
       bones: []
       spriteID: 54d24a5fd3949094fbdb7cb5c7e2ce6e
       internalID: 1607633643
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_0
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 48
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b978e9e300fd9a34f835561811649f41
+      internalID: -1795059907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_1
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 48
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1ce08e9d2d6b27e4a991f78983926d66
+      internalID: 1901759693
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_2
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 48
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 03055ea567ad5c1408d1cc2cd113a175
+      internalID: -869600661
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Bomb_0
+      rect:
+        serializedVersion: 2
+        x: 87
+        y: 113
+        width: 5
+        height: 5
+      alignment: 9
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fc6844ace0d547d42960b48aac05f23c
+      internalID: -242374347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Boss_Bomb_1
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 113
+        width: 5
+        height: 5
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c9a38f3dc2582ae4b829de116a606be5
+      internalID: 155055081
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bomb_0
+      rect:
+        serializedVersion: 2
+        x: 241
+        y: 193
+        width: 14
+        height: 14
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0d6a8dfe8adbb1f4093a79c0bcfa5710
+      internalID: 445002851
       vertices: []
       indices: 
       edges: []
@@ -1352,6 +1478,7 @@ TextureImporter:
       tourch_8: 1347258821
       box_single_0: -587955585
       floor_7: -1725435177
+      Boss_1: 1901759693
       floor_5: -422498268
       fountain_green_body_0: -1678145454
       player_0: 1479397498
@@ -1362,21 +1489,25 @@ TextureImporter:
       color_wall_1: 1612072487
       color_wall_4: 426219300
       weapon_3: 882769375
+      Bomb_0: 445002851
       box_double_0: 1637789167
       floor_2: -1932689608
       floor_10: -1434945807
+      Boss_Bomb_1: 155055081
       enemy_0: 1607633643
       weapon_5: -718811763
       floor_6: -1252400819
       tourch_4: 1803420745
-      floor_0: -1367170093
+      column_1: 1379030216
       player_1: -793140465
       weapon_0: -1314514364
-      column_1: 1379030216
+      Boss_0: -1795059907
+      floor_0: -1367170093
       fountain_red_bottom_0: 1830913181
       tourch_7: -1543933044
       weapon_1: 1726464171
       color_wall_0: 517764907
+      Boss_2: -869600661
       fountain_head_0: 1688188823
       floor_8: 2022968247
       column_0: -1220679959
@@ -1391,6 +1522,7 @@ TextureImporter:
       stairs_2: -800964849
       floor_12: 1116604386
       floor_3: 2071400030
+      Boss_Bomb_0: -242374347
       color_wall_2: -1030498670
       chess_open_0: -1633015566
       chess_open_1: 592289657

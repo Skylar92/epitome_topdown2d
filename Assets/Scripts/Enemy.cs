@@ -27,10 +27,15 @@ public class Enemy : Mover
         base.Start();
         _playerTransform = GameManager.Instance.player.transform;
         _startPosition = transform.position;
-        _hitBox = transform.GetChild(0).GetComponent<BoxCollider2D>();
+        _hitBox = GetHitBox();
     }
 
-    private void FixedUpdate()
+    protected virtual BoxCollider2D GetHitBox()
+    {
+        return transform.GetChild(0).GetComponent<BoxCollider2D>();
+    }
+
+    protected virtual void FixedUpdate()
     {
         // Is the player in the range
         if (Vector3.Distance(_playerTransform.position, _startPosition) < chaseLength)
