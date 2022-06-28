@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -12,10 +13,16 @@ public class Fighter : MonoBehaviour
     // Immunity
     protected float ImmuneTime = 1.0f;
     protected float LastImmuneTime;
+    protected int InitialMaxHitPoint;
     
     // Push
     protected Vector3 PushDirection;
-    
+
+    public virtual void Awake()
+    {
+        InitialMaxHitPoint = maxHitPoint;
+    }
+
     protected virtual void TakeDamage(Damage damage)
     {
         if (!(Time.time - LastImmuneTime > ImmuneTime)) return;

@@ -6,8 +6,9 @@ public sealed class Player : Mover
 
     private SpriteRenderer _spriteRenderer;
 
-    public void Awake()
+    public override void Awake()
     {
+        base.Awake();
         _spriteRenderer = GetComponent<SpriteRenderer>();
     }
 
@@ -28,6 +29,12 @@ public sealed class Player : Mover
     {
         level += 1;
         maxHitPoint += 2;
+        hitPoint = maxHitPoint;
+    }
+
+    public void OnPlayerLoaded()
+    {
+        maxHitPoint = InitialMaxHitPoint + level * 2;
         hitPoint = maxHitPoint;
     }
 }

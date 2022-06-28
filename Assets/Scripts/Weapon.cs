@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class Weapon : Collidable
 {
@@ -17,11 +19,15 @@ public class Weapon : Collidable
     private Animator _animator;
     private static readonly int SwingAnimator = Animator.StringToHash("Swing");
 
+    private void Awake()
+    {
+        _weaponSprite = GetComponent<SpriteRenderer>();
+        _animator = GetComponent<Animator>();
+    }
+
     protected override void Start()
     {
         base.Start();
-        _weaponSprite = GetComponent<SpriteRenderer>();
-        _animator = GetComponent<Animator>();
 
         var instanceWeapon = GameManager.Instance.weaponList[weaponLevel - 1];
         UpdateWeapon(instanceWeapon);

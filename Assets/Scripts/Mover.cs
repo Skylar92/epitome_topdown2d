@@ -12,6 +12,10 @@ public abstract class Mover : Fighter
     protected BoxCollider2D BoxCollider2D;
     protected RaycastHit2D Hit;
 
+    public override void Awake()
+    {
+        base.Awake();
+    }
 
     protected virtual void Start()
     {
