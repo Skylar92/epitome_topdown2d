@@ -13,8 +13,8 @@ public class Weapon : Collidable
     
     private SpriteRenderer _weaponSprite;
 
-    private float cooldown = 0.5f;
-    private float lastSwing;
+    private float _cooldown = 0.5f;
+    private float _lastSwing;
 
     private Animator _animator;
     private static readonly int SwingAnimator = Animator.StringToHash("Swing");
@@ -31,6 +31,8 @@ public class Weapon : Collidable
 
         var instanceWeapon = GameManager.Instance.weaponList[weaponLevel - 1];
         UpdateWeapon(instanceWeapon);
+
+        ColliderListener.OnEnemyCollideEvent += OnWeaponHitEnemy;
     }
 
     public void UpdateWeapon(WeaponMeta weaponMeta)
@@ -45,9 +47,9 @@ public class Weapon : Collidable
     {
         base.Update();
 
-        if (!Input.GetKey(KeyCode.Space) || !(Time.time - lastSwing > cooldown)) return;
+        if (!Input.GetKey(KeyCode.Space) || !(Time.time - _lastSwing > _cooldown)) return;
         
-        lastSwing = Time.time;
+        _lastSwing = Time.time;
         Swing();
     }
 
@@ -56,10 +58,8 @@ public class Weapon : Collidable
         _animator.SetTrigger(SwingAnimator);
     }
 
-    protected override void OnCollide(Collider2D hit)
+    private void OnWeaponHitEnemy(Collider2D hit)
     {
-        if (!hit.CompareTag("Enemy")) return;
-        
         var isCriticalDamage = Random.Range(0, 100) < criticalChance;
         var damage = new Damage()
         {

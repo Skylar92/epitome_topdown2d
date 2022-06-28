@@ -18,6 +18,8 @@ public class Bomb : Collidable
         base.Start();
         _startTime = Time.time;
         _journeyLength = Vector3.Distance(start, end);
+
+        ColliderListener.OnPlayerCollideEvent += OnBombHitPlayer;
     }
 
     protected override void Update()
@@ -43,10 +45,8 @@ public class Bomb : Collidable
         Destroy(gameObject);
     }
 
-    protected override void OnCollide(Collider2D hit)
+    private void OnBombHitPlayer(Collider2D hit)
     {
-        if (!hit.CompareTag("Player")) return;
-
         var damage = new Damage()
         {
             DamageAmount = 1,

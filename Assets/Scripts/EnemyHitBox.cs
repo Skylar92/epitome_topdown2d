@@ -7,18 +7,21 @@ public class EnemyHitBox : Collidable
     public int damagePoint = 1;
     public float pushForce = 5;
 
-    protected override void OnCollide(Collider2D hit)
+    protected override void Start()
     {
-        if (hit.CompareTag("Player"))
-        {
-            var damage = new Damage()
-            {
-                DamageAmount = this.damagePoint,
-                Origin = transform.position,
-                PushForce = pushForce
-            };
+        base.Start();
+        ColliderListener.OnPlayerCollideEvent += OnHitPlayer;
+    }
 
-            hit.SendMessage("TakeDamage", damage);
-        }
+    private void OnHitPlayer(Collider2D hit)
+    {
+        var damage = new Damage()
+        {
+            DamageAmount = this.damagePoint,
+            Origin = transform.position,
+            PushForce = pushForce
+        };
+
+        hit.SendMessage("TakeDamage", damage);
     }
 }

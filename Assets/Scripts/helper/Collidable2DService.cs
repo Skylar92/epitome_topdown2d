@@ -13,6 +13,7 @@ namespace helper
         private readonly Collider2D[] _hits = new Collider2D[10];
 
         public event CollidableEvent OnPlayerCollideEvent;
+        public event CollidableEvent OnEnemyCollideEvent;
 
         public Collidable2DService(Collider2D collider, ContactFilter2D filter)
         {
@@ -30,6 +31,8 @@ namespace helper
 
                 if (hit.CompareTag("Player"))
                     OnPlayerCollideEvent?.Invoke(hit);
+                if (hit.CompareTag("Enemy"))
+                    OnEnemyCollideEvent?.Invoke(hit);
 
                 _hits[index] = null;
             }

@@ -4,9 +4,15 @@ public class Collectable : Collidable
 {
     private bool _collected;
 
-    protected override void OnCollide(Collider2D hit)
+    protected override void Start()
     {
-        if (hit.CompareTag("Player") && !_collected)
+        base.Start();
+        ColliderListener.OnPlayerCollideEvent += OnTryCollect;
+    }
+
+    private void OnTryCollect(Collider2D hit)
+    {
+        if (!_collected)
         {
             OnCollect();
         }

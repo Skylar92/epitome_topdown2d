@@ -5,10 +5,14 @@ public class PortalController : Collidable
 {
     public string nextLevel;
 
-    protected override void OnCollide(Collider2D hit)
+    protected override void Start()
     {
-        if (!hit.CompareTag("Player")) return;
+        base.Start();
+        ColliderListener.OnPlayerCollideEvent += OnPlayerEnterPortal;
+    }
 
+    private void OnPlayerEnterPortal(Collider2D hit)
+    {
         GameManager.Instance.SaveState();
         SceneManager.LoadScene(nextLevel);
     }

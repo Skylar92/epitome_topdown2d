@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using helper;
 using UnityEngine;
 
 public class Enemy : Mover
@@ -22,12 +23,16 @@ public class Enemy : Mover
     private BoxCollider2D _hitBox;
     private Collider2D[] _hits = new Collider2D[10];
 
+    private Collidable2DService _collidable2DService;
+
     protected override void Start()
     {
         base.Start();
         _playerTransform = GameManager.Instance.player.transform;
         _startPosition = transform.position;
         _hitBox = GetHitBox();
+        _collidable2DService = new Collidable2DService(_hitBox, filter);
+        _collidable2DService.OnPlayerCollideEvent += OnCollidingWithPlayer;
     }
 
     protected virtual BoxCollider2D GetHitBox()
@@ -66,19 +71,12 @@ public class Enemy : Mover
 
         // Check for overlaps
         _collidingWithPlayer = false;
-        _hitBox.OverlapCollider(filter, _hits);
-        for (var index = 0; index < _hits.Length; index++)
-        {
-            var hit = _hits[index];
-            if (hit == null) continue;
+        _collidable2DService.CheckCollider();
+    }
 
-            if (hit.CompareTag("Player"))
-            {
-                _collidingWithPlayer = true;
-            }
-
-            _hits[index] = null;
-        }
+    private void OnCollidingWithPlayer(Collider2D player)
+    {
+        _collidingWithPlayer = true;
     }
 
     protected override void CalculateDirection(float x)

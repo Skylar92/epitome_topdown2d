@@ -35,6 +35,6 @@ public class CameraMotor : MonoBehaviour
             return transformPosition < lookAtPosition ? (delta - bound) : (delta + bound);
         }
 
-        return 0.0f;
+        return 0f;
     }
 }
