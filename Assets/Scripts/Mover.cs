@@ -24,6 +24,7 @@ public abstract class Mover : Fighter
     
     protected virtual void UpdateMotor(Vector3 input)
     {
+        if (!isAlive) return;
         // Calculate direction
         CalculateDirection(input.x);
         

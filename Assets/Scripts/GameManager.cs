@@ -19,12 +19,19 @@ public class GameManager : MonoBehaviour
     public Player player;
     public Weapon weapon;
     public FloatingTextManager floatingTextManager;
+    
+    // References panel
+
+    public Animator restGamePanelAnimator; 
 
     public int money;
     public int experience;
 
     public List<WeaponMeta> weaponList;
     public List<Stateful> statefulObjects;
+    
+    private static readonly int Show = Animator.StringToHash("show");
+    private static readonly int Hide = Animator.StringToHash("hide");
 
     private GameManager()
     {
@@ -123,5 +130,22 @@ public class GameManager : MonoBehaviour
         }
 
         player.transform.position = GameObject.Find("PlayerStart").transform.position;
+    }
+
+    public void OnPlayerDead()
+    {
+        restGamePanelAnimator.SetTrigger(Show);
+        
+        // Reset player state
+        PlayerPrefs.SetInt(PlayerDataMoneyKey, 0);
+        PlayerPrefs.SetInt(PlayerDataExperienceKey, 0);
+        PlayerPrefs.SetInt(PlayerDataLevelKey, 1);
+        PlayerPrefs.SetInt(PlayerDataWeaponLevelKey, 1);
+    }
+
+    public void RestartGame()
+    {
+        restGamePanelAnimator.SetTrigger(Hide);
+        SceneManager.LoadScene("Main");
     }
 }

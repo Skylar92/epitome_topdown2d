@@ -71,4 +71,14 @@ public class Weapon : Collidable
             
         hit.SendMessage("TakeDamage", damage);
     }
+
+    public void Hide()
+    {
+        gameObject.SetActive(false);
+    }
+
+    public void Show()
+    {
+        gameObject.SetActive(true);
+    }
 }

@@ -9,12 +9,13 @@ public class Fighter : MonoBehaviour
     public int hitPoint = 10;
     public int maxHitPoint = 10;
     public float pushRecoverySpeed = 0.2f;
+    public bool isAlive = true;
     
     // Immunity
     protected float ImmuneTime = 1.0f;
     protected float LastImmuneTime;
     protected int InitialMaxHitPoint;
-    
+
     // Push
     protected Vector3 PushDirection;
 
@@ -25,7 +26,7 @@ public class Fighter : MonoBehaviour
 
     protected virtual void TakeDamage(Damage damage)
     {
-        if (!(Time.time - LastImmuneTime > ImmuneTime)) return;
+        if (!(Time.time - LastImmuneTime > ImmuneTime) || !isAlive) return;
         
         LastImmuneTime = Time.time;
         hitPoint -= damage.DamageAmount;
